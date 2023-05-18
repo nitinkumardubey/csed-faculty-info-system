@@ -10,9 +10,9 @@ require('../db/conn');
 const User = require('../model/userSchema');
 const { find } = require('../model/userSchema');
 
-// router.get('/', (req, res) => {
-//      res.send('Hello');
-// });
+router.get('/', (req, res) => {
+     res.send('Hello');
+});
 
 router.post('/register', async (req, res) => {
      // res.send('hellor register');
@@ -40,7 +40,7 @@ router.post('/register', async (req, res) => {
      }
 });
 
-router.get('/allfaculty', async (req, res) => {
+router.get('/all-faculty', async (req, res) => {
      try {
           const alldata = await User.find({});
           res.send({ data: alldata });
