@@ -10,9 +10,9 @@ require('../db/conn');
 const User = require('../model/userSchema');
 const { find } = require('../model/userSchema');
 
-router.get('/', (req, res) => {
-     res.send('Hello');
-});
+// router.get('/', (req, res) => {
+//      res.send('Hello');
+// });
 
 router.post('/register', async (req, res) => {
      // res.send('hellor register');
