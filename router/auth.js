@@ -14,7 +14,7 @@ const { find } = require('../model/userSchema');
 //      res.send('Hello');
 // });
 
-router.post('/register', async (req, res) => {
+router.post('/register', Authenticate, async (req, res) => {
      // res.send('hellor register');
      const { email, name, desgn, password, image } = req.body;
      // const phone = "";
