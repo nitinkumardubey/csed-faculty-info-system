@@ -49,6 +49,15 @@ router.get('/all-faculty', async (req, res) => {
      }
 });
 
+router.get('/aall-faculty', Authenticate, async (req, res) => {
+     try {
+          const alldata = await User.find({});
+          res.send({ data: alldata });
+     } catch (error) {
+          console.log(error);
+     }
+});
+
 router.get('/facinfo', async (req, res) => {
      try {
           const alldata = await User.findOne({ email: email });
@@ -101,7 +110,7 @@ router.post('/login', async (req, res) => {
      }
 });
 
-router.post('/facultyupdateprofile', async (req, res) => {
+router.post('/facultyupdateprofile', Authenticate, async (req, res) => {
      // res.send('hellor register');
      const { email, name, desgn, imaged, phone, latestQ, joingD, natureofassociation, specialisation, areasofinterest, education, experience } = req.body;
      // res.send(email + "" + name + "" + desgn + "" + password + "" + image);
@@ -124,7 +133,7 @@ router.post('/facultyupdateprofile', async (req, res) => {
      }
 });
 
-router.post('/editpub', async (req, res) => {
+router.post('/editpub', Authenticate, async (req, res) => {
      const { email, title, id, author, year, link } = req.body;
      try {
           const userExist = await User.findOne({ email: email });
@@ -142,7 +151,7 @@ router.post('/editpub', async (req, res) => {
      }
 });
 
-router.post('/editclass', async (req, res) => {
+router.post('/editclass', Authenticate, async (req, res) => {
      const { email, topic, id, course, yearrr, semester } = req.body;
      let year = yearrr;
      try {
@@ -181,7 +190,7 @@ router.post('/forgotp', async (req, res) => {
      }
 });
 
-router.post('/facdelete', async (req, res) => {
+router.post('/facdelete', Authenticate, async (req, res) => {
      const { em } = req.body;
      let email = em;
      try {
@@ -201,7 +210,7 @@ router.post('/facdelete', async (req, res) => {
 });
 
 
-router.post('/deletepub', async (req, res) => {
+router.post('/deletepub', Authenticate, async (req, res) => {
      const { email, id, title } = req.body;
      try {
           const userExist = await User.findOne({ email: email });
@@ -220,7 +229,7 @@ router.post('/deletepub', async (req, res) => {
 });
 
 
-router.post('/deleteclass', async (req, res) => {
+router.post('/deleteclass', Authenticate, async (req, res) => {
      const { email, id, topic } = req.body;
      try {
           const userExist = await User.findOne({ email: email });
